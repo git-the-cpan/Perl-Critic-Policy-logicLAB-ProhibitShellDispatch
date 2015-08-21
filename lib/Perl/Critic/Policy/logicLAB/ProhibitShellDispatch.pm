@@ -1,14 +1,12 @@
 package Perl::Critic::Policy::logicLAB::ProhibitShellDispatch;
 
-# $Id$
-
 use strict;
 use warnings;
 use base 'Perl::Critic::Policy';
 use Perl::Critic::Utils qw{ $SEVERITY_MEDIUM };
 use 5.008;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 Readonly::Scalar my $EXPL => q{Use Perl builtin instead};
 
@@ -77,6 +75,14 @@ __END__
 
 =pod
 
+=begin markdown
+
+[![CPAN version](https://badge.fury.io/pl/Perl-Critic-Policy-logicLAB-ProhibitShellDispatch.svg)](http://badge.fury.io/pl/Perl-Critic-Policy-logicLAB-ProhibitShellDispatch)
+[![Build Status](https://travis-ci.org/jonasbn/pcplpsd.svg?branch=master)](https://travis-ci.org/jonasbn/pcplpsd)
+[![Coverage Status](https://coveralls.io/repos/jonasbn/pcplpsd/badge.png)](https://coveralls.io/r/jonasbn/pcplpsd)
+
+=end markdown
+
 =head1 NAME
 
 Perl::Critic::Policy::logicLAB::ProhibitShellDispatch - simple policy prohibiting shell dispatching
@@ -87,7 +93,7 @@ This policy is a policy in the L<Perl::Critic::logicLAB> distribution.
 
 =head1 VERSION
 
-This documentation describes version 0.03
+This documentation describes version 0.05
 
 =head1 DESCRIPTION
 
@@ -149,11 +155,11 @@ This distribution has no known incompatibilities.
 This distribution has no known bugs or limitations.
 
 As pointed out in bug report RT:91542, some modules and components might 
-implement methods/routines holding names similar to the builtins system 
-and exec. I had not anticipated this when first implementing the policy 
-and there might be some cases where the current implementation does not 
-handle these well, please file a bugreport if you run into one of these 
-and I will address these.
+implement methods/routines holding names similar to the builtins C<system>, 
+C<exec>, C<qx> and similar. I had not anticipated this when first implementing 
+the policy and I expect there will be more cases where the current implementation 
+does not handle this well, please file a bugreport if you run into one of these 
+issues and I will investigate and address accordingly.
 
 =head1 BUG REPORTING
 
@@ -182,8 +188,8 @@ See also F<t/perlcriticrc>
     ---------------------------- ------ ------ ------ ------ ------ ------ ------
     File                           stmt   bran   cond    sub    pod   time  total
     ---------------------------- ------ ------ ------ ------ ------ ------ ------
-    .../ProhibitShellDispatch.pm  100.0   83.3  100.0  100.0  100.0  100.0   98.0
-    Total                         100.0   83.3  100.0  100.0  100.0  100.0   98.0
+    .../ProhibitShellDispatch.pm  100.0  100.0   83.3  100.0  100.0  100.0   98.5
+    Total                         100.0  100.0   83.3  100.0  100.0  100.0   98.5
     ---------------------------- ------ ------ ------ ------ ------ ------ ------
 
 =head1 SEE ALSO
@@ -214,10 +220,10 @@ See also F<t/perlcriticrc>
 
 =back
 
-=head1 LICENSE AND COPYRIGHT
+=head1 COPYRIGHT
 
-Copyright (c) 2013 Jonas B. Nielsen. All rights reserved.
+Perl::Critic::Policy::logicLAB::ProhibitShellDispatch is (C) by Jonas B. Nielsen, (jonasbn) 2013-2015
 
-This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.
+Perl::Critic::Policy::logicLAB::ProhibitShellDispatch is released under the artistic license 2.0
 
 =cut
